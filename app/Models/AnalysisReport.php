@@ -28,6 +28,14 @@ class AnalysisReport extends Model
         'ai_feedback',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->{$model->getKeyName()} = (string) \Illuminate\Support\Str::uuid();
+        });
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
