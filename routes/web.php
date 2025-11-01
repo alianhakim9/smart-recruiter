@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnalysisReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -12,4 +13,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+Route::get('/reports/{report}', [AnalysisReportController::class, 'show'])
+    ->name('reports.show');
+
+require __DIR__ . '/auth.php';

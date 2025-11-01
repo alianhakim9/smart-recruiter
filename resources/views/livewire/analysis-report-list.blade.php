@@ -42,10 +42,14 @@
                 @endif
 
                 @if ($report->status === 'completed')
-                    <button wire:click="showReportDetails('{{ $report->id }}')"
+                    {{-- <button wire:click="showReportDetails('{{ $report->id }}')"
                         class="ml-2 text-indigo-500 hover:text-indigo-700 text-sm font-medium">
                         Lihat Detail
-                    </button>
+                    </button> --}}
+                    <a href="{{ route('reports.show', $report->id) }}"
+                        class="ml-2 text-indigo-500 hover:text-indigo-700 text-sm font-medium">
+                        Lihat Detail
+                    </a>
                 @endif
             </div>
         </div>
